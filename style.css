@@ -1,0 +1,186 @@
+
+/*@media only handheld and (orientation: portrait) {
+html {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: -50%;
+}
+}*/
+
+*:not(ul, li, ol, dialog) {   
+    overflow: hidden;
+}
+
+*:not(ul, li, ol, legend, fieldset, dialog, p) {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+b {
+    font-weight: bold;
+}
+
+.gameIcon {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 32 32'%3E%3Cg fill='none'%3E%3Cpath fill='%23321b41' d='M23.5 30h-15a6.499 6.499 0 1 1 0-12.997h15A6.499 6.499 0 1 1 23.5 30'/%3E%3Cpath fill='%23533566' d='M6.809 8.44c-.096-2.528 1.048-4.448 3.545-4.448h11.318c1.556 0 3.655 1.173 3.505 4.361c-.12 2.551-.572 10.688-.782 14.438H7.61c-.25-4.02-.73-12.45-.802-14.352'/%3E%3Cpath fill='%23f8312f' d='M21.717 21.742H10.282c-1.4 0-2.418-.94-2.856-2.27v3.598c0 1.495 1.343 2.677 2.85 2.677h11.446c1.508 0 2.851-1.192 2.851-2.677v-3.537c-.438 1.33-1.456 2.21-2.856 2.21'/%3E%3C/g%3E%3C/svg%3E") no-repeat center;
+    background-size: contain;
+    background-position: center;
+    vertical-align: text-top;
+    fill: currentColor;
+}
+
+.englishFlag {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 36 36'%3E%3Cpath fill='%2300247d' d='M0 9.059V13h5.628zM4.664 31H13v-5.837zM23 25.164V31h8.335zM0 23v3.941L5.63 23zM31.337 5H23v5.837zM36 26.942V23h-5.631zM36 13V9.059L30.371 13zM13 5H4.664L13 10.837z'/%3E%3Cpath fill='%23cf1b2b' d='m25.14 23l9.712 6.801a4 4 0 0 0 .99-1.749L28.627 23zM13 23h-2.141l-9.711 6.8c.521.53 1.189.909 1.938 1.085L13 23.943zm10-10h2.141l9.711-6.8a4 4 0 0 0-1.937-1.085L23 12.057zm-12.141 0L1.148 6.2a4 4 0 0 0-.991 1.749L7.372 13z'/%3E%3Cpath fill='%23eee' d='M36 21H21v10h2v-5.836L31.335 31H32a4 4 0 0 0 2.852-1.199L25.14 23h3.487l7.215 5.052c.093-.337.158-.686.158-1.052v-.058L30.369 23H36zM0 21v2h5.63L0 26.941V27c0 1.091.439 2.078 1.148 2.8l9.711-6.8H13v.943l-9.914 6.941c.294.07.598.116.914.116h.664L13 25.163V31h2V21zM36 9a3.98 3.98 0 0 0-1.148-2.8L25.141 13H23v-.943l9.915-6.942A4 4 0 0 0 32 5h-.663L23 10.837V5h-2v10h15v-2h-5.629L36 9.059zM13 5v5.837L4.664 5H4a4 4 0 0 0-2.852 1.2l9.711 6.8H7.372L.157 7.949A4 4 0 0 0 0 9v.059L5.628 13H0v2h15V5z'/%3E%3Cpath fill='%23cf1b2b' d='M21 15V5h-6v10H0v6h15v10h6V21h15v-6z'/%3E%3C/svg%3E")  no-repeat center;
+    background-size: contain;
+    background-position: center;
+    vertical-align: text-top;
+    fill: currentColor;
+}
+
+.franceFlag {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 36 36'%3E%3Cpath fill='%23ed2939' d='M36 27a4 4 0 0 1-4 4h-8V5h8a4 4 0 0 1 4 4z'/%3E%3Cpath fill='%23002495' d='M4 5a4 4 0 0 0-4 4v18a4 4 0 0 0 4 4h8V5z'/%3E%3Cpath fill='%23eee' d='M12 5h12v26H12z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-position: center;
+    vertical-align: text-top;
+    fill: currentColor;
+}
+
+.text, .text *:not(i) {
+    font-family: 'Amarante';
+}
+
+
+html {
+    height: 100dvh;
+    width: 100dvw;
+}
+
+body, section:not(.component) {
+    height: 100%;
+    width: 100%;
+    /*background-color: white;*/
+}
+
+section {
+
+    position: relative;
+
+    &:not(.component) {
+        /*background-color: white;*/
+        &:not(:target) {
+            display: none;
+            visibility: hidden;
+        }
+    }
+}
+
+@font-face {
+    font-family: 'HumorContest';
+    src: url('/data/font/icomoon.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+
+/* Otherwise, use `::-webkit-scrollbar-*` pseudo-elements */
+@supports selector(::-webkit-scrollbar) {
+    /* width */
+    ::-webkit-scrollbar {
+        width: 20px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        border: solid black 3px !important;
+        border-radius: 20px !important;
+        background: white !important;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background-color: black !important; 
+        border-radius: 20px !important;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: grey !important;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-track:hover {
+        background: whitesmoke !important;
+    }
+}
+
+button {
+    font-size: 4px;
+    font-family: 'Amarante';
+    color: white;
+    background-color: black;
+}
+
+button:disabled {
+    background-color: grey;
+}
+
+
+/* Try to fix foreignObject in SVG for Safari */
+
+
+
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {
+  font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+#root, #__next {
+  isolation: isolate;
+}

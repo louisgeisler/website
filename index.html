@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Person Website</title>
+	<meta name="color-scheme" content="light">
+	<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Louis Geisler">
+	<meta name="version" content="1.0.0"><!--Version: MAJOR.MINOR.PATCH-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 32 32'%3E%3Cg fill='none'%3E%3Cpath fill='%23321b41' d='M23.5 30h-15a6.499 6.499 0 1 1 0-12.997h15A6.499 6.499 0 1 1 23.5 30'/%3E%3Cpath fill='%23533566' d='M6.809 8.44c-.096-2.528 1.048-4.448 3.545-4.448h11.318c1.556 0 3.655 1.173 3.505 4.361c-.12 2.551-.572 10.688-.782 14.438H7.61c-.25-4.02-.73-12.45-.802-14.352'/%3E%3Cpath fill='%23f8312f' d='M21.717 21.742H10.282c-1.4 0-2.418-.94-2.856-2.27v3.598c0 1.495 1.343 2.677 2.85 2.677h11.446c1.508 0 2.851-1.192 2.851-2.677v-3.537c-.438 1.33-1.456 2.21-2.856 2.21'/%3E%3C/g%3E%3C/svg%3E">
+	<script src="/gui.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <style>
+        body {
+            overflow-y: scroll !important;
+            font-family: 'Merriweather', serif;
+			font-size: 2vmin;
+			padding: 0% 20% !important;
+			
+			@media only screen and (max-width: 1100px) {
+				padding: 0 !important;
+			}
+        }
+
+		q {
+			font-family: "Playfair Display", serif;
+			font-optical-sizing: auto;
+			font-weight: normal;
+			font-style: italic;
+			font-size: 3em;
+			text-align: center;
+		}
+
+        svg {
+			width: 100%;
+			height: 100%;
+        }
+
+		.svgContainer {
+			height: 60vh;
+			aspect-ratio: 30 / 25;
+			/*float: left;*/
+			margin: auto;
+
+			@media (max-aspect-ratio: 1) {
+				width: 100%;
+				aspect-ratio: 30 / 25;
+				height: unset;
+			}
+		}
+
+        .text {
+            font-family: Tahoma, sans-serif;
+            height: 100%;
+            width: 100%;
+            font-weight: bolder;
+            text-transform: uppercase;
+            text-align: center;
+            /*font-variant-emoji: text;*/
+            /*filter: saturate(2) sepia(1);*/
+            /*filter: contrast(2) sepia(1) grayscale(1) invert(1) saturate(2);*/
+        }
+
+		p {	
+			text-indent: 1.3em;
+		}
+
+        .title {
+            font-family: 'Merriweather', serif;
+            font-weight: bolder;
+            padding: 20px;
+            text-align: justify;
+            width: 100%;
+            height: 20%;
+        }
+
+        .content {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5em;
+            font-weight: 300;
+            padding: 20px;
+            text-align: justify;
+        }
+
+		.copyrighted {
+            text-align: right;
+            font-family: 'Merriweather', serif;
+            font-size: 1.5em;
+            padding: 10px;
+		}
+		
+		@media (max-aspect-ratio: 1) {
+			.playDemo.sticky {
+				position: sticky;
+				top: 0px;
+			}
+
+			.playDemo:not(.sticky) {
+				display: none;
+			}
+			#hrPlayDemo {
+				display: none;
+			}
+		}
+		
+		#shortPlay {
+			display: none;
+		}
+
+		.playDemo {
+			width: 100%;
+			padding: 2% 2%;
+
+			button {
+				padding: 2%;
+				height: 100%;
+				width: 100%;	
+				border-radius: 3vmax;
+				font-size: 8vmin;
+				color: white;
+				background-color: black;
+			}
+		}
+
+		#shareDiv {
+			width: 100%;
+			height: 10%;
+            font-size: 5vmin;
+			text-align: center;
+		}
+
+		i {
+			display: inline-block;
+			font-size: inherit;
+			height: 1em;
+			width: 1em;
+		}
+		
+		a {
+			white-space: nowrap;
+		}
+
+		i.link {
+			background: center / contain no-repeat url("/icons/link.svg");
+		}
+
+		i.github {
+			background: center / contain no-repeat url("/icons/github.svg");
+			margin-right: 0.5em;
+		}
+
+		i.pypi {
+			background: center / contain no-repeat url("/icons/pypi.svg");
+			margin-right: 0.5em;
+		}
+
+		i.npm {
+			background: center / contain no-repeat url("/icons/npm.svg");
+			margin-right: 0.5em;
+		}
+
+		i.linkedin {
+			background: center / contain no-repeat url("/icons/linkedin.svg");
+			margin-right: 0.5em;
+		}
+
+		i.medium {
+			background: center / contain no-repeat url("/icons/medium.svg");
+			margin-right: 0.5em;
+		}
+
+		h1 {
+			font-weight: bold;
+            /*font-size: 5vmin;*/
+			font-size: 1.7em;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+
+		h2 {
+			font-size: 1.6em;
+			font-weight: normal;
+			/*margin-left: 17px;*/
+		}
+
+		ul {
+			margin-top: 1%;
+		}
+		li {
+			margin-top: 0.5%;
+		}
+
+		ul.supportList {
+			list-style-type: none;
+			padding-left: 2em;
+
+			i {
+				margin-right: 0.9em;
+			}
+
+			ul {
+				list-style-type: disc;
+				padding: 0;
+				margin-left: 10%;
+				margin-top: 0;
+				
+			/*margin-left: 1%;
+			    padding-inline-start: 40px;*/
+			}
+		}
+
+		legend {
+			padding-bottom: 0.5em;
+		}
+				
+    </style>
+	<div class="title text2fit">
+		<span lang="en">
+			Louis Geisler's Projects
+		</span>
+		<span lang="fr">
+			Projets de Louis Geisler
+		</span>
+	</div>
+	<hr />
+	<div id="contact" class="content">
+		<h1>
+			Contacts:
+		</h1>
+		<ul class="supportList">
+			<li>
+				<a target="_blank" href="https://github.com/louisgeisler">
+					<i class="github"></i>GitHub
+				</a>
+			</li>
+			<li>
+				<a target="_blank" href="https://www.linkedin.com/in/louisgeisler/">
+					<i class="linkedin"></i>LinkedIn
+				</a>
+			</li>
+		</ul>
+	</div>
+	<hr />
+	<div id="summary" class="content">
+		<h1>
+			<span lang="en">Project Summary:</span>
+			<span lang="fr">Sommaire des Projets :</span>
+		</h1>
+		<ul class="supportList">
+			<li>🎩&nbsp;&nbsp;
+				<a href="#HumourContest">
+					Humour Contest 🚧
+				</a>
+			</li>
+			<li>🎭&nbsp;&nbsp;
+				<a href="#LuccaFacesSolver">
+					<span lang="fr">Résolveur de Lucca Faces</span>
+					<span lang="en">Lucca Faces Solver</span>
+				</a>
+			</li>
+			<li>🎅&nbsp;&nbsp;
+				<a href="#SecretSantaEmailing">
+					<span lang="fr">Générateur d'email pour Père Noël Secret</span>
+					<span lang="en">Secret Santa Emailing</span>
+				</a>
+			</li>
+			<li>🗺️&nbsp;&nbsp;
+				<a href="#Doc2Map">
+					Doc2Map
+				</a>
+			</li>
+			<li>🎱&nbsp;&nbsp;
+				<a href="#Billard">
+					<span lang="fr">Billard Interactif</span>
+					<span lang="en">Interactive Pool Table</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<hr />
+	<div class="content">
+		<h1 lang="en">Projects:</h1>
+		<h1 lang="fr">Projets :</h1>
+		<br>
+		<br>
+		<fieldset>
+			<legend id="HumourContest">
+				<h2>
+					🎩 Humour Contest
+					(2024)
+					🚧
+				</h2>
+			</legend>
+			<p>
+				<span lang="fr">
+					Humour Contest est un party game, au croisement entre le jeu de société et le jeu vidéo, où vous participez avec votre téléphone, répondez à des questions puis votez pour la meilleure réponse !
+				</span>
+				<span lang="en">
+					Humour Contest is a party game at the crossroads between a board game and a video game, where you participate with your phone, answer questions, and then vote for the best answer!
+				</span>
+				<br>
+				<br>
+				<ul class="supportList">
+					<li>
+						<a target="_blank" href="https://humour-contest.org/">
+							<i class="link"></i>
+							<span lang="fr">Site Internet</span>
+							<span lang="en">Website</span>
+						</a>
+					</li>
+				</ul>
+			</p>
+		</fieldset>
+		<br>
+		<br>
+		<fieldset>
+			<legend id="LuccaFacesSolver">
+				<h2>
+					🎭
+					<span lang="fr">Résolveur de Lucca Faces</span>
+					<span lang="en">Lucca Faces Solver</span>
+					(2024)
+				</h2>
+			</legend>
+			<p>
+				<span lang="fr">
+					Un résolveur d'easter egg pour Lucca Faces, un mini-jeu dans un logiciel RH où il faut associer les visages de vos collègues à leurs noms le plus rapidement possible.
+				</span>
+				<span lang="en">
+					An easter egg solver for Lucca Faces, an HR software mini-game where you match your coworkers' faces with their names as fast as possible.
+				</span>
+				<br>
+				<br>
+				<ul class="supportList">
+					<li>
+						<a target="_blank" href="https://github.com/louisgeisler/LuccaFacesSolver">
+							<i class="github"></i>Repo
+						</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://www.linkedin.com/posts/louisgeisler_javascript-luccafaces-lucca-activity-7180991442998165504-ZTAx">
+							<i class="linkedin"></i><span lang="fr">Post LinkedIn</span><span lang="en">LinkedIn Post</span>
+						</a>
+					</li>
+				</ul>
+			</p>
+		</fieldset>
+		<br>
+		<br>
+		<fieldset>
+			<legend id="SecretSantaEmailing">
+				<h2>
+					🎅
+					<span lang="fr">Générateur d'email pour Père Noël Secret</span>
+					<span lang="en">Secret Santa Emailing</span>
+					(2023)
+				</h2>
+			</legend>
+			<p>
+				<span lang="fr">
+					Une manière très simple et sécurisée de générer et envoyer des emails pour un Père Noël Secret, que ce soit pour des amis ou des collègues.
+				</span>
+				<span lang="en">
+					A very simple and secure way to generate and send emails for a Secret Santa, whether for friends or coworkers.
+				</span>
+				<br>
+				<br>
+				<ul class="supportList">
+					<li>
+						<a target="_blank" href="https://github.com/louisgeisler/EmailTemplatingSender">
+							<i class="github"></i>Repo
+						</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://www.linkedin.com/posts/louisgeisler_merry-christmas-everyone-im-excited-activity-7144837380238180353-NKBu">
+							<i class="linkedin"></i><span lang="fr">Post LinkedIn</span><span lang="en">LinkedIn Post</span>
+						</a>
+					</li>
+				</ul>
+			</p>
+		</fieldset>
+		<br>
+		<br>
+		<fieldset>
+			<legend id="Doc2Map">
+				<h2>
+					🗺️
+					Doc2Map
+					(2021)
+				</h2>
+			</legend>
+			<p>
+				<span lang="fr">
+					Doc2Map est un algorithme qui convertit un corpus de fichiers texte en une carte interactive, similaire à Google Maps, avec plusieurs niveaux de zoom qui résument les textes et les regroupent.
+				</span>
+				<span lang="en">
+					Doc2Map is an algorithm that convert a corpus of text files into an interactive map, similar to Google Map, with multiple zoom levels that summaries texts and cluster them.
+				</span>
+				<br>
+				<br>
+				<ul class="supportList">
+					<li>
+						<a target="_blank" href="https://towardsdatascience.com/doc2map-travel-your-documents-like-a-walk-on-google-map-1e8b827fdc04">
+							<i class="medium"></i><span lang="fr">Article</span><span lang="en">Article</span>
+						</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://github.com/louisgeisler/Doc2Map">
+							<i class="github"></i><span lang="fr">Python Repo</span><span lang="en">Python Repo</span>
+						</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://pypi.org/project/doc2map/">
+							<i class="pypi"></i><span lang="fr">Package Python</span><span lang="en">Python Package</span> (PyPI)
+						</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://github.com/louisgeisler/Leaflet.MarkerPreCluster">
+							<i class="github"></i><span lang="fr">Javascript Repo (Pour la visualisation)</span><span lang="en">Javascript Repo (For the visualisation)</span>
+						</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://www.npmjs.com/package/leaflet.markercluster">
+							<i class="npm"></i><span lang="fr">Package Javascript</span><span lang="en">Javascript Package</span> (NPM)
+						</a>
+					</li>
+				</ul>
+			</p>
+		</fieldset>
+		<br>
+		<br>
+		<fieldset>
+			<legend id="Billard">
+				<h2>
+					🎱
+					<span lang="fr">Billard Interactif</span>
+					<span lang="en">Interactive Pool Table</span>
+					(2021)
+				</h2>
+			</legend>
+			<p>
+				<span lang="fr">
+					Le projet de Billard Interactif combine des médias tangibles et l'intelligence artificielle pour projeter en temps réel des informations—telles que la vitesse, l'accélération et les projections géométriques—directement sur la table de billard, permettant ainsi aux joueurs d'apprendre les concepts de physique et de mathématiques à travers un jeu immersif.
+				</span>
+				<span lang="en">
+					The Interactive Billiards project combines tangible media and artificial intelligence to project real-time information—such as speed, acceleration, and geometric projections—directly onto a billiard table. This immersive tool allows players to learn physics and math concepts through live gameplay, showcasing how innovative technologies can enhance future educational systems.
+				</span>
+				<br>
+				<br>
+				<ul class="supportList">
+					<li>
+						<a target="_blank" href="https://github.com/louisgeisler/Billard">
+							<i class="github"></i>Repo
+						</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://ift.devinci.fr/projects/interactive-pool">
+							<i class="link"></i><span lang="fr">Projet en cours</span><span lang="en">Ongoing Project</span>
+						</a>
+					</li>
+				</ul>
+			</p>
+		</fieldset>
+	</div>
+	<!--
+	<hr />
+	<div id="shareDiv" class="text2fit share">
+		<a rel="noopener" href="https://www.instagram.com/humour_contest/" target="_blank">
+			<i class="instagram"></i>
+		</a>
+		<a rel="noopener" href="https://www.facebook.com/people/Humour-Contest/61565933112585/" target="_blank">
+			<i class="facebook"></i>
+		</a>
+		<a rel="noopener" href="https://x.com/HumourContest" target="_blank">
+			<i class="X"></i>
+		</a>
+		<a rel="noopener" href="https://docs.google.com/forms/d/e/1FAIpQLScleZalqA-8z1WyaEfXjnqY5_Vwa4lF8K4mbDouCmEkQjPeRQ/viewform?usp=sf_link" target="_blank">
+			<i class="form"></i>
+		</a>
+	</div>
+	-->
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<hr />
+	<div class="copyrighted">
+		<span lang="fr">
+			Créé par
+		</span>
+		<span lang="en">
+			Created by
+		</span>
+		<b>Louis Geisler</b>
+	</div>
+
+
+	<script defer>
+		window.onresize()
+	</script>
+
+</body>
+</html>
